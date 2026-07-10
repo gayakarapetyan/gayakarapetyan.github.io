@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+     EDIT ME: change the name in the <title> and everywhere marked EDIT ME
+     ============================================================ -->
+<title>Gayane Gasparyan — Atmospheric Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E2233;        /* deep atmospheric navy — main text */
+    --navy:#1F4E79;       /* brand navy — accents, headings */
+    --crimson:#DC143C;    /* brand crimson — links, data marks (sparing) */
+    --paper:#FBFBF9;      /* soft off-white background */
+    --line:#DDE3E8;       /* hairlines */
+    --muted:#5B6B78;      /* secondary text */
+    --panel:#F2F5F7;      /* faint panel fill */
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif; font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--navy); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s, color .15s;}
+  a:hover{border-color:var(--crimson); color:var(--crimson);}
+  a:focus-visible{outline:2px solid var(--crimson); outline-offset:3px; border-radius:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--navy);
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line);}
+  .hero-inner{
+    max-width:var(--maxw); margin:0 auto; padding:96px 28px 72px;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center;
+  }
+  .hero h1{
+    font-family:"Fraunces",serif; font-weight:500; font-size:clamp(40px,6.2vw,68px);
+    line-height:1.02; letter-spacing:-.01em; margin:.35em 0 .25em; color:var(--ink);
+  }
+  .hero .role{font-size:19px; color:var(--muted); max-width:36ch;}
+  .hero .role strong{color:var(--ink); font-weight:600;}
+  .hero-cta{margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.04em;
+    padding:11px 18px; border:1px solid var(--navy); border-radius:2px; color:var(--navy);
+  }
+  .btn:hover{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .btn.primary{background:var(--navy); color:#fff;}
+  .btn.primary:hover{background:var(--crimson); border-color:var(--crimson); color:#fff;}
+
+  /* signature: the diurnal potential-gradient curve */
+  .signature{position:relative;}
+  .signature .cap{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted);
+    letter-spacing:.06em; margin-top:8px;
+  }
+  .curve-frame{border:1px solid var(--line); border-radius:4px; background:#fff; padding:14px 14px 6px;}
+  .grid-line{stroke:var(--line); stroke-width:1;}
+  .axis{stroke:#C3CCD3; stroke-width:1;}
+  .tick{font-family:"IBM Plex Mono",monospace; font-size:9px; fill:var(--muted);}
+  .curve{fill:none; stroke:var(--navy); stroke-width:2.4; stroke-linecap:round;}
+  .curve-dash{fill:none; stroke:var(--crimson); stroke-width:1.6; stroke-dasharray:4 4; opacity:.85;}
+  .curve path.draw{stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.4s ease-out .3s forwards;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .dot{fill:var(--crimson);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:72px 0; border-bottom:1px solid var(--line);}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:28px;}
+  .sec-head .num{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--crimson);}
+  h2{font-family:"Fraunces",serif; font-weight:500; font-size:clamp(26px,3.4vw,34px); margin:0; color:var(--ink);}
+  .lede{font-size:19px; max-width:62ch; color:var(--ink);}
+
+  /* research cards */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:8px;}
+  .card{border:1px solid var(--line); border-radius:4px; padding:22px; background:#fff;}
+  .card h3{font-family:"Fraunces",serif; font-weight:500; font-size:20px; margin:0 0 8px;}
+  .card p{margin:0; font-size:15px; color:var(--muted); line-height:1.55;}
+  .card .tag{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--navy); letter-spacing:.08em; text-transform:uppercase;}
+
+  /* publications */
+  .pub{
+    display:grid; grid-template-columns:74px 1fr; gap:20px; padding:20px 0; border-top:1px solid var(--line);
+  }
+  .pub:last-child{border-bottom:1px solid var(--line);}
+  .pub .yr{font-family:"IBM Plex Mono",monospace; font-size:14px; color:var(--crimson); padding-top:2px;}
+  .pub .t{font-weight:600; color:var(--ink);}
+  .pub .v{font-size:15px; color:var(--muted); font-style:italic;}
+
+  /* contact */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 40px; max-width:640px;}
+  .contact-row{display:flex; gap:14px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--line);}
+  .contact-row .k{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); min-width:88px; letter-spacing:.06em; text-transform:uppercase;}
+  .contact-row .val{font-size:16px;}
+
+  footer{padding:36px 0 60px; color:var(--muted); font-size:13px;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+
+  @media (max-width:820px){
+    .hero-inner{grid-template-columns:1fr; padding:64px 28px 48px;}
+    .signature{order:-1; max-width:420px;}
+    .cards{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .curve path.draw{animation:none; stroke-dashoffset:0;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <!-- EDIT ME: institution / one-line identity -->
+      <span class="eyebrow">Doctoral Researcher · Atmospheric Electricity</span>
+      <!-- EDIT ME: your name -->
+      <h1>Gayane<br>Karapetyan</h1>
+      <p class="role">
+        <!-- EDIT ME: one or two sentences about you -->
+        I study the <strong>atmospheric potential gradient</strong> and the global electric
+        circuit — from thunderstorm physics and lightning climatology to long-term
+        fair-weather field-mill records. PhD candidate at Magdeburg-Stendal University
+        of Applied Sciences.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#publications">Publications</a>
+        <!-- EDIT ME: link your CV / email -->
+        <a class="btn" href="mailto:you@example.com">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- SIGNATURE: a stylised fair-weather diurnal PG curve vs the Carnegie curve.
+         This is your actual research object — edit the path data only if you want. -->
+    <figure class="signature" aria-label="Diurnal potential-gradient curve">
+      <div class="curve-frame">
+        <svg viewBox="0 0 340 200" role="img" aria-hidden="true">
+          <!-- grid -->
+          <line class="grid-line" x1="40" y1="30" x2="320" y2="30"/>
+          <line class="grid-line" x1="40" y1="75" x2="320" y2="75"/>
+          <line class="grid-line" x1="40" y1="120" x2="320" y2="120"/>
+          <!-- axes -->
+          <line class="axis" x1="40" y1="20" x2="40" y2="165"/>
+          <line class="axis" x1="40" y1="165" x2="320" y2="165"/>
+          <!-- ticks -->
+          <text class="tick" x="34" y="34" text-anchor="end">+</text>
+          <text class="tick" x="34" y="168" text-anchor="end">0</text>
+          <text class="tick" x="40" y="180" text-anchor="middle">00</text>
+          <text class="tick" x="130" y="180" text-anchor="middle">06</text>
+          <text class="tick" x="220" y="180" text-anchor="middle">12</text>
+          <text class="tick" x="310" y="180" text-anchor="middle">18 UT</text>
+          <!-- Carnegie reference (dashed crimson) -->
+          <path class="curve-dash" d="M40,110 C90,150 120,150 160,90 C200,40 250,45 320,70"/>
+          <!-- Local corrected PG (navy, animated draw) -->
+          <path class="curve draw" d="M40,120 C80,150 110,150 150,120 C185,95 210,90 240,105 C270,118 295,115 320,110"/>
+          <circle class="dot" cx="150" cy="120" r="3.2"/>
+        </svg>
+      </div>
+      <figcaption class="cap">Fair-weather diurnal PG — local record (navy) vs Carnegie curve (crimson)</figcaption>
+    </figure>
+  </div>
+</header>
+-->
+
+<!-- ======================= ABOUT ======================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
+    <!-- EDIT ME -->
+    <p class="lede">
+      I work at the intersection of atmospheric electricity, data science, and instrumentation.
+      My research combines multi-instrument field observations — field mills, particle detectors,
+      and weather radar — with long-term time-series analysis to understand how local and global
+      processes shape the near-surface electric field. I also teach Python and machine learning
+      for environmental applications.
+    </p>
+  </div>
+</section>
+
+<!-- ======================= RESEARCH ======================= -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Research areas</h2></div>
+    <div class="cards">
+      <!-- EDIT ME: three focus areas -->
+      <div class="card">
+        <span class="tag">Fair-weather PG</span>
+        <h3>Potential gradient</h3>
+        <p>A multi-year field-mill record from suburban Central Europe, with new instrumental corrections for device bias and leakage current.</p>
+      </div>
+      <div class="card">
+        <span class="tag">High-energy</span>
+        <h3>Thunderstorm physics</h3>
+        <p>Thunderstorm ground enhancements, runaway electron avalanches, and terminating lightning at Mt. Aragats.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Climatology</span>
+        <h3>Lightning &amp; radar</h3>
+        <p>Regional lightning climatology and MRL-5 radar CAPPI processing linking flashes to storm structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PUBLICATIONS ======================= -->
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Selected publications</h2></div>
+    <!-- EDIT ME: replace titles, venues, years, and add DOIs as links -->
+    <div class="pub">
+      <div class="yr">2025</div>
+      <div>
+        <div class="t"><a href="#">Article title goes here</a></div>
+        <div class="v">JGR: Atmospheres</div>
+      </div>
+    </div>
+    <div class="pub">
+      <div class="yr">2024</div>
+      <div>
+        <div class="t"><a href="#">Article title goes here</a></div>
+        <div class="v">Physical Review D</div>
+      </div>
+    </div>
+    <div class="pub">
+      <div class="yr">2023</div>
+      <div>
+        <div class="t"><a href="#">Article title goes here</a></div>
+        <div class="v">Scientific Reports</div>
+      </div>
+    </div>
+    <p style="margin-top:22px;">
+      <!-- EDIT ME: link to Google Scholar / ORCID -->
+      <a class="mono" href="#">Full list on Google Scholar →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Contact</h2></div>
+    <div class="contact-grid">
+      <!-- EDIT ME: fill in your details -->
+      <div class="contact-row"><span class="k">Email</span><span class="val"><a href="mailto:gayane.karapetyan@h2.de">gayane.karapetyan@h2.de</a></span></div>
+      <div class="contact-row"><span class="k">Institution</span><span class="val">Hochschule Magdeburg-Stendal</span></div>
+      <div class="contact-row"><span class="k">Scholar</span><span class="val"><a href="#">Google Scholar</a></span></div>
+      <div class="contact-row"><span class="k">ORCID</span><span class="val"><a href="#">0000-0000-0000-0000</a></span></div>
+      <div class="contact-row"><span class="k">GitHub</span><span class="val"><a href="#">github.com/yourname</a></span></div>
+      <div class="contact-row"><span class="k">LinkedIn</span><span class="val"><a href="#">in/yourname</a></span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© <span id="yr"></span> Gayane Gasparyan</span>
+    <span class="mono">Built with GitHub Pages · last updated 2026</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
